@@ -1,0 +1,76 @@
+
+/* Define default spinner */
+.ui-icon-loading {
+	background: url("../libs/jquerymobile/1.4.5/images/ajax-loader.gif") repeat scroll 0 0 / 46px 46px transparent!important;
+}
+/* button_back */
+#startScreen_button_back {
+
+}
+.ui-btn.startScreen_button_back {
+
+}
+/* mobilecontainer */
+.ui-content.startScreen_mobilecontainer {
+	padding: 15px 15px 15px 15px;
+}
+/* mobilefooter */
+.startScreen_mobilefooter {
+	min-height:38px;
+}
+/* Panel_navbar */
+.startScreen_Panel_navbar .ui-panel-inner {
+	padding: 5px 15px 15px 15px;
+}
+.startScreen_Panel_navbar:focus {
+	outline: 0;
+}
+/* mobilelist_22 */
+.ui-page .startScreen_mobilelist_22 {
+	margin: 4px 0px 0px -15px;
+}
+/* mobilelistitem_23 */
+/* mobilelistitembutton_24 */
+.startScreen_mobilelistitembutton_24 {
+
+}
+/* mobilelistitem_25 */
+/* mobilelistitembutton_26 */
+.startScreen_mobilelistitembutton_26 {
+
+}
+/* mobilelistitem_27 */
+/* mobilelistitembutton_28 */
+.startScreen_mobilelistitembutton_28 {
+
+}
+/* mobilelistitem_29 */
+/* mobilelistitembutton_30 */
+.startScreen_mobilelistitembutton_30 {
+
+}
+/* mobilelistitem_31 */
+/* mobilelistitembutton_32 */
+.startScreen_mobilelistitembutton_32 {
+
+}
+/* mobilelistitem_33 */
+/* mobilelistitembutton_34 */
+.startScreen_mobilelistitembutton_34 {
+
+}
+/* mobilelistitem_35 */
+/* mobilelistitembutton_36 */
+.startScreen_mobilelistitembutton_36 {
+
+}
+/* mobilelistitem_37 */
+/* mobilelistitembutton_38 */
+.startScreen_mobilelistitembutton_38 {
+
+}
+/* mobilelistitem_39 */
+/* mobilelistitembutton_40 */
+.startScreen_mobilelistitembutton_40 {
+
+}
