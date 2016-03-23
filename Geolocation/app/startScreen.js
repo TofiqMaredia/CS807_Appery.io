@@ -67,7 +67,104 @@ function startScreen_js() {
 
     Apperyio.mappings = Apperyio.mappings || {};
 
+    Apperyio.mappings["startScreen_geolocation_onsuccess_mapping_0"] = {
+        "homeScreen": "startScreen",
+        "directions": [
+
+        {
+            "from_name": "geolocation",
+            "from_type": "SERVICE_RESPONSE",
+
+            "to_name": "markerLat",
+            "to_type": "LOCAL_STORAGE",
+
+            "mappings": [
+
+            {
+
+                "source": "$['data']['coords']['latitude']",
+                "target": "$"
+
+            }
+
+            ]
+        },
+
+        {
+            "from_name": "geolocation",
+            "from_type": "SERVICE_RESPONSE",
+
+            "to_name": "markerLng",
+            "to_type": "LOCAL_STORAGE",
+
+            "mappings": [
+
+            {
+
+                "source": "$['data']['coords']['longitude']",
+                "target": "$"
+
+            }
+
+            ]
+        }
+
+        ]
+    };
+
+    Apperyio.mappings["startScreen_geolocation_onbeforesend_mapping_0"] = {
+        "homeScreen": "startScreen",
+        "directions": [
+
+        {
+
+            "to_name": "geolocation",
+            "to_type": "SERVICE_REQUEST",
+
+            "to_default": {
+                "data": {
+                    "options": {
+                        "maximumAge": 3000,
+                        "timeout": 5000,
+                        "enableHighAccuracy": true,
+                        "watchPosition": false
+                    }
+                }
+            },
+
+            "mappings": []
+        }
+
+        ]
+    };
+
     Apperyio.datasources = Apperyio.datasources || {};
+
+    window.geolocation = Apperyio.datasources.geolocation = new Apperyio.DataSource(GeolocationService, {
+        "onBeforeSend": function(jqXHR) {
+            Apperyio.processMappingAction(Apperyio.mappings["startScreen_geolocation_onbeforesend_mapping_0"]);
+        },
+        "onComplete": function(jqXHR, textStatus) {
+
+        },
+        "onSuccess": function(data) {
+            Apperyio.processMappingAction(Apperyio.mappings["startScreen_geolocation_onsuccess_mapping_0"]);
+            var markerLatLng = new google.maps.LatLng(localStorage.getItem('markerLat'), localStorage.getItem('markerLng'));
+
+            var marker = new google.maps.Marker({
+                position: markerLatLng,
+                map: map,
+                title: 'My position',
+                animation: google.maps.Animation.DROP
+            });
+
+            markers.push(marker);
+            bounds.extend(markerLatLng);
+            map.fitBounds(bounds);
+            map.setZoom(10);
+        },
+        "onError": function(jqXHR, textStatus, errorThrown) {}
+    });
 
     Apperyio.CurrentScreen = 'startScreen';
     _.chain(Apperyio.mappings).filter(function(m) {
@@ -81,6 +178,8 @@ function startScreen_js() {
     // On Load
     var startScreen_onLoad = function() {
             startScreen_elementsExtraJS();
+
+            initialize();
 
             startScreen_deviceEvents();
             startScreen_windowEvents();
@@ -187,6 +286,41 @@ function startScreen_js() {
                 }
             },
         }, '#startScreen_mobileheader [name="button_back"]');
+
+        $(document).off("click", '#startScreen_Panel_navbar [name="mobilelistitem_25"]').on({
+            click: function(event) {
+                if (!$(this).attr('disabled')) {
+                    try {
+                        geolocation.execute({});
+                    } catch (e) {
+                        console.error(e);
+                        hideSpinner();
+                    };
+                    $('[id="startScreen_Panel_navbar"]').panel("close");
+
+                }
+            },
+        }, '#startScreen_Panel_navbar [name="mobilelistitem_25"]');
+
+        $(document).off("click", '#startScreen_Panel_navbar [name="mobilelistitem_29"]').on({
+            click: function(event) {
+                if (!$(this).attr('disabled')) {
+                    trafficLayer.setMap(map);
+                    Apperyio('nav_menu').panel('close');
+
+                }
+            },
+        }, '#startScreen_Panel_navbar [name="mobilelistitem_29"]');
+
+        $(document).off("click", '#startScreen_Panel_navbar [name="mobilelistitem_31"]').on({
+            click: function(event) {
+                if (!$(this).attr('disabled')) {
+                    trafficLayer.setMap(null);
+                    Apperyio('nav_menu').panel('close');
+
+                }
+            },
+        }, '#startScreen_Panel_navbar [name="mobilelistitem_31"]');
 
     };
 
