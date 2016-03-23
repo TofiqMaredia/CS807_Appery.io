@@ -72,6 +72,10 @@
         </script>
         <script type="text/javascript" src="../libs/ms_sdk_bundle/client-sdk.js">
         </script>
+        <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true">
+        </script>
+        <script type="text/javascript" src="../libs/jquery-ui-map/jquery.ui.map.full.min.js">
+        </script>
         <script type="text/javascript" src="../libs/base/appery.js">
         </script>
         <script type="text/javascript" src="../libs/base/component-manager.js">
@@ -121,6 +125,20 @@
                 <link href="startScreen.css" rel="stylesheet" type="text/css" />
                 <script type="text/javascript" src="startScreen.js">
                 </script>
+                <!-- google_map -->
+                <div id="startScreen_google_map" dsid="google_map" name="google_map" data-role="appery_googlemap"
+                tiggzitype="object" apperytype="object" class='startScreen_google_map' style='width:100%;'>
+                </div>
+                <ul data-role="listview" id="startScreen_google_map_markers" name="google_map_markers"
+                dsid="google_map_markers" style="display:none">
+                    <!-- marker_43 -->
+                    <li id="startScreen_marker_43" name="marker_43" dsid="marker_43" tiggzitype="marker"
+                    apperytype="marker" rendered="false" latitude="" longitude="" text="Add Components Here"
+                    address="San Francisco, CA" show_info="false" style="display:none">
+                        <div id="startScreen_marker_43_infoWindow" name="marker_43_infoWindowContent" class='startScreen_marker_43'>
+                        </div>
+                    </li>
+                </ul>
             </div>
             <!-- mobilefooter -->
             <div data-role="footer" data-position="fixed" class="startScreen_mobilefooter" name="mobilefooter"

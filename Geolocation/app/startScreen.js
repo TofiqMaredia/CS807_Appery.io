@@ -32,6 +32,8 @@ function startScreen_js() {
     /* Object & array with components "name-to-id" mapping */
     var n2id_buf = {
         'button_back': 'startScreen_button_back',
+        'google_map': 'startScreen_google_map',
+        'marker_43': 'startScreen_marker_43',
         'mobilelist_22': 'startScreen_mobilelist_22',
         'mobilelistitem_23': 'startScreen_mobilelistitem_23',
         'mobilelistitembutton_24': 'startScreen_mobilelistitembutton_24',
@@ -111,6 +113,31 @@ function startScreen_js() {
 
     function startScreen_elementsExtraJS() {
         // screen (startScreen) extra code
+
+        /* google_map */
+
+        $("[name = 'google_map']").wrap("<div/>");
+        $("[name = 'google_map']").parent().css("margin-left", $("[name = 'google_map']").css("margin-left"));
+        $("[name = 'google_map']").parent().css("margin-right", $("[name = 'google_map']").css("margin-right"));
+        $("[name = 'google_map']").css("margin-left", '0');
+        $("[name = 'google_map']").css("margin-right", '0');
+
+        var google_map_options = {
+            markerSourceName: "google_map_markers",
+            latitude: "",
+            longitude: "",
+            address: "San Francisco, CA",
+            zoom: 10,
+            showLocationMarker: false
+        }
+
+        Apperyio.__registerComponent('google_map', new Apperyio.ApperyMapComponent("google_map", google_map_options));
+        $("[name='google_map_markers'] [apperytype='marker']").attr("reRender", "google_map");
+        $(":mobile-pagecontainer").off("pagecontainershow.startScreen_mobilecontainer").on("pagecontainershow.startScreen_mobilecontainer", function(event, ui) {
+            if (($('#startScreen_google_map', ui.toPage).length > 0) && (Apperyio('google_map') != undefined)) {
+                Apperyio('google_map').refresh();
+            }
+        });
 
         /* mobilelist_22 */
 

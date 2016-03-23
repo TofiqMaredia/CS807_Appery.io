@@ -14,6 +14,17 @@
 .ui-content.startScreen_mobilecontainer {
 	padding: 15px 15px 15px 15px;
 }
+/* google_map */
+.startScreen_google_map {
+	width: 320px; height: 200px;
+	margin: 4px 0px 4px 0px;
+}
+/* marker_43 */
+.startScreen_marker_43 {
+	text-shadow:none;
+	color:black;
+	font-family:Arial;
+}
 /* mobilefooter */
 .startScreen_mobilefooter {
 	min-height:38px;
