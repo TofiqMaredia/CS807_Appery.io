@@ -17,9 +17,4 @@ Apperyio.getModel = Apperyio.Entity.get.bind(Apperyio.Entity);
 /**
  * Data storage
  */
-Apperyio.storage = {
-
-    "markerLat": new $a.LocalStorage("markerLat", "String"),
-
-    "markerLng": new $a.LocalStorage("markerLng", "String")
-};
+Apperyio.storage = {};
