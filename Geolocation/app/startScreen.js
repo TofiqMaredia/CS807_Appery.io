@@ -75,34 +75,22 @@ function startScreen_js() {
             "from_name": "geolocation",
             "from_type": "SERVICE_RESPONSE",
 
-            "to_name": "markerLat",
-            "to_type": "LOCAL_STORAGE",
+            "to_name": "startScreen",
+            "to_type": "UI",
 
             "mappings": [
 
             {
 
                 "source": "$['data']['coords']['latitude']",
-                "target": "$"
+                "target": "$['google_map:latitude']"
 
-            }
-
-            ]
-        },
-
-        {
-            "from_name": "geolocation",
-            "from_type": "SERVICE_RESPONSE",
-
-            "to_name": "markerLng",
-            "to_type": "LOCAL_STORAGE",
-
-            "mappings": [
+            },
 
             {
 
                 "source": "$['data']['coords']['longitude']",
-                "target": "$"
+                "target": "$['google_map:longitude']"
 
             }
 
@@ -149,19 +137,6 @@ function startScreen_js() {
         },
         "onSuccess": function(data) {
             Apperyio.processMappingAction(Apperyio.mappings["startScreen_geolocation_onsuccess_mapping_0"]);
-            var markerLatLng = new google.maps.LatLng(localStorage.getItem('markerLat'), localStorage.getItem('markerLng'));
-
-            var marker = new google.maps.Marker({
-                position: markerLatLng,
-                map: map,
-                title: 'My position',
-                animation: google.maps.Animation.DROP
-            });
-
-            markers.push(marker);
-            bounds.extend(markerLatLng);
-            map.fitBounds(bounds);
-            map.setZoom(10);
         },
         "onError": function(jqXHR, textStatus, errorThrown) {}
     });
@@ -301,26 +276,6 @@ function startScreen_js() {
                 }
             },
         }, '#startScreen_Panel_navbar [name="mobilelistitem_25"]');
-
-        $(document).off("click", '#startScreen_Panel_navbar [name="mobilelistitem_29"]').on({
-            click: function(event) {
-                if (!$(this).attr('disabled')) {
-                    trafficLayer.setMap(map);
-                    Apperyio('Panel_navbar').panel('close');
-
-                }
-            },
-        }, '#startScreen_Panel_navbar [name="mobilelistitem_29"]');
-
-        $(document).off("click", '#startScreen_Panel_navbar [name="mobilelistitem_31"]').on({
-            click: function(event) {
-                if (!$(this).attr('disabled')) {
-                    trafficLayer.setMap(null);
-                    Apperyio('Panel_navbar').panel('close');
-
-                }
-            },
-        }, '#startScreen_Panel_navbar [name="mobilelistitem_31"]');
 
     };
 
