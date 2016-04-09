@@ -14,7 +14,8 @@
         <!-- Enable all requests, inline styles, and eval() -->
         <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src 'self' 'unsafe-inline' *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *">
         <link href="../css/theme/jqm/jqm.css" rel="stylesheet" />
-        <link href="../css/theme/flat-ui/flat-ui.css" rel="stylesheet" />
+        <link href="../css/theme/twitter-bootstrap/twitter-bootstrap.css" rel="stylesheet"
+        />
         <link href="../libs/jquerymobile/1.4.5/jquery.mobile.structure-1.4.5.css" rel="stylesheet"
         />
         <script type="text/javascript" src="../libs/underscore/underscore.js">
@@ -64,11 +65,17 @@
         </script>
         <script type="text/javascript" src="../libs/ms_sdk_bundle/localforage/dist/localforage.js">
         </script>
+        <script type="text/javascript" src="../libs/ms_sdk_bundle/localforage/plugins/localforage-setitems/localforage-setitems.js">
+        </script>
+        <script type="text/javascript" src="../libs/ms_sdk_bundle/localforage/plugins/localforage-find/localforage-find.js">
+        </script>
         <script type="text/javascript" src="../libs/ms_sdk_bundle/crypto-js-md5/crypto-js-md5.js">
         </script>
         <script type="text/javascript" src="../libs/ms_sdk_bundle/moment/moment.js">
         </script>
         <script type="text/javascript" src="../libs/ms_sdk_bundle/underscore-query/underscore-query.min.js">
+        </script>
+        <script type="text/javascript" src="../libs/ms_sdk_bundle/offline/offline.js">
         </script>
         <script type="text/javascript" src="../libs/ms_sdk_bundle/client-sdk.js">
         </script>
@@ -95,8 +102,6 @@
         <link href="../libs/apperyio/mobilebase.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="../js/services/model.js">
         </script>
-        <script type="text/javascript" src="../js/JavaScript1.js">
-        </script>
         <script type="text/javascript" src="../js/services/service.js">
         </script>
     </head>
@@ -111,13 +116,13 @@
             <div data-role="header" data-position="fixed" data-add-back-btn="false" data-back-btn-text="Back"
             data-theme="f" name="mobileheader" id="startScreen_mobileheader" class="startScreen_mobileheader">
                 <h1 dsid="mobileheader">
-                    Google Maps!
+                    Maps!
                 </h1>
-                <!-- button_back --><!--
-                --><a data-role="button" name="button_back" dsid="button_back" class="startScreen_button_back ui-btn-left"
-                style='min-height:16px; ' id="startScreen_button_back" data-corners="true" data-icon="gear"
+                <!-- open_panel --><!--
+                --><a data-role="button" name="open_panel" dsid="open_panel" class="startScreen_open_panel ui-btn-left"
+                style='min-height:16px; ' id="startScreen_open_panel" data-corners="true" data-icon="gear"
                 data-iconpos="left" x-apple-data-detectors="false" data-inline='true' data-mini='true'
-                data-theme="f" tabindex="3">
+                data-theme="f" tabindex="2">
                 &nbsp;
                 </a>
             </div>
@@ -133,11 +138,11 @@
                 </div>
                 <ul data-role="listview" id="startScreen_google_map_markers" name="google_map_markers"
                 dsid="google_map_markers" style="display:none">
-                    <!-- marker_43 -->
-                    <li id="startScreen_marker_43" name="marker_43" dsid="marker_43" tiggzitype="marker"
+                    <!-- marker_24 -->
+                    <li id="startScreen_marker_24" name="marker_24" dsid="marker_24" tiggzitype="marker"
                     apperytype="marker" rendered="false" latitude="" longitude="" text="Add Components Here"
                     address="San Francisco, CA" show_info="false" style="display:none">
-                        <div id="startScreen_marker_43_infoWindow" name="marker_43_infoWindowContent" class='startScreen_marker_43'>
+                        <div id="startScreen_marker_24_infoWindow" name="marker_24_infoWindowContent" class='startScreen_marker_24'>
                         </div>
                     </li>
                 </ul>
@@ -146,74 +151,74 @@
             <div data-role="footer" data-position="fixed" class="startScreen_mobilefooter" name="mobilefooter"
             dsid="mobilefooter" id="startScreen_mobilefooter" data-theme="f">
             </div>
-            <!-- Panel_navbar -->
+            <!-- nav_menu -->
             <div data-role="panel" tabindex="-1" data-position="left" data-display="reveal"
-            id="startScreen_Panel_navbar" class="startScreen_Panel_navbar" name="Panel_navbar"
-            dsid="Panel_navbar" data-theme="f">
-                <!-- mobilelist_22 -->
-                <ul data-role="listview" id="startScreen_mobilelist_22" class="startScreen_mobilelist_22"
-                name="mobilelist_22" dsid="mobilelist_22" data-inset="true" data-theme="f" data-divider-theme="b"
+            id="startScreen_nav_menu" class="startScreen_nav_menu" name="nav_menu" dsid="nav_menu"
+            data-theme="f">
+                <!-- mobilelist_3 -->
+                <ul data-role="listview" id="startScreen_mobilelist_3" class="startScreen_mobilelist_3"
+                name="mobilelist_3" dsid="mobilelist_3" data-inset="true" data-theme="f" data-divider-theme="b"
                 data-count-theme="b" style="" data-split-icon="carat-r">
-                    <!-- mobilelistitem_23 -->
-                    <li id="startScreen_mobilelistitem_23" data-role="list-divider" name="mobilelistitem_23"
-                    dsid="mobilelistitem_23" class="startScreen_mobilelistitem_23">
+                    <!-- mobilelistitem_4 -->
+                    <li id="startScreen_mobilelistitem_4" data-role="list-divider" name="mobilelistitem_4"
+                    dsid="mobilelistitem_4" class="startScreen_mobilelistitem_4">
                         <h3>
                             Me
                         </h3>
                     </li>
-                    <!-- mobilelistitem_25 -->
-                    <li class="startScreen_mobilelistitem_25" data-icon="carat-r">
-                        <a id="startScreen_mobilelistitem_25" name="mobilelistitem_25" dsid="mobilelistitem_25"
-                        tabindex="2" class="startScreen_mobilelistitem_25">
+                    <!-- mobilelistitem_6 -->
+                    <li class="startScreen_mobilelistitem_6" data-icon="carat-r">
+                        <a id="startScreen_mobilelistitem_6" name="mobilelistitem_6" dsid="mobilelistitem_6"
+                        tabindex="1" class="startScreen_mobilelistitem_6">
                         <h3>My Location</h3>
                         </a>
                     </li>
-                    <!-- mobilelistitem_27 -->
-                    <li id="startScreen_mobilelistitem_27" data-role="list-divider" name="mobilelistitem_27"
-                    dsid="mobilelistitem_27" class="startScreen_mobilelistitem_27">
+                    <!-- mobilelistitem_8 -->
+                    <li id="startScreen_mobilelistitem_8" data-role="list-divider" name="mobilelistitem_8"
+                    dsid="mobilelistitem_8" class="startScreen_mobilelistitem_8">
                         <h3>
                             Traffic
                         </h3>
                     </li>
-                    <!-- mobilelistitem_29 -->
-                    <li class="startScreen_mobilelistitem_29" data-icon="carat-r">
-                        <a id="startScreen_mobilelistitem_29" name="mobilelistitem_29" dsid="mobilelistitem_29"
-                        tabindex="2" class="startScreen_mobilelistitem_29">
+                    <!-- mobilelistitem_10 -->
+                    <li class="startScreen_mobilelistitem_10" data-icon="carat-r">
+                        <a id="startScreen_mobilelistitem_10" name="mobilelistitem_10" dsid="mobilelistitem_10"
+                        tabindex="1" class="startScreen_mobilelistitem_10">
                         <h3>Show</h3>
                         </a>
                     </li>
-                    <!-- mobilelistitem_31 -->
-                    <li class="startScreen_mobilelistitem_31" data-icon="carat-r">
-                        <a id="startScreen_mobilelistitem_31" name="mobilelistitem_31" dsid="mobilelistitem_31"
-                        tabindex="2" class="startScreen_mobilelistitem_31">
+                    <!-- mobilelistitem_12 -->
+                    <li class="startScreen_mobilelistitem_12" data-icon="carat-r">
+                        <a id="startScreen_mobilelistitem_12" name="mobilelistitem_12" dsid="mobilelistitem_12"
+                        tabindex="1" class="startScreen_mobilelistitem_12">
                         <h3>Hide</h3>
                         </a>
                     </li>
-                    <!-- mobilelistitem_33 -->
-                    <li id="startScreen_mobilelistitem_33" data-role="list-divider" name="mobilelistitem_33"
-                    dsid="mobilelistitem_33" class="startScreen_mobilelistitem_33">
+                    <!-- mobilelistitem_14 -->
+                    <li id="startScreen_mobilelistitem_14" data-role="list-divider" name="mobilelistitem_14"
+                    dsid="mobilelistitem_14" class="startScreen_mobilelistitem_14">
                         <h3>
                             World Places
                         </h3>
                     </li>
-                    <!-- mobilelistitem_35 -->
-                    <li class="startScreen_mobilelistitem_35" data-icon="carat-r">
-                        <a id="startScreen_mobilelistitem_35" name="mobilelistitem_35" dsid="mobilelistitem_35"
-                        tabindex="2" class="startScreen_mobilelistitem_35">
+                    <!-- mobilelistitem_16 -->
+                    <li class="startScreen_mobilelistitem_16" data-icon="carat-r">
+                        <a id="startScreen_mobilelistitem_16" name="mobilelistitem_16" dsid="mobilelistitem_16"
+                        tabindex="1" class="startScreen_mobilelistitem_16">
                         <h3>Show</h3>
                         </a>
                     </li>
-                    <!-- mobilelistitem_37 -->
-                    <li id="startScreen_mobilelistitem_37" data-role="list-divider" name="mobilelistitem_37"
-                    dsid="mobilelistitem_37" class="startScreen_mobilelistitem_37">
+                    <!-- mobilelistitem_18 -->
+                    <li id="startScreen_mobilelistitem_18" data-role="list-divider" name="mobilelistitem_18"
+                    dsid="mobilelistitem_18" class="startScreen_mobilelistitem_18">
                         <h3>
                             Settings
                         </h3>
                     </li>
-                    <!-- mobilelistitem_39 -->
-                    <li class="startScreen_mobilelistitem_39" data-icon="carat-r">
-                        <a id="startScreen_mobilelistitem_39" name="mobilelistitem_39" dsid="mobilelistitem_39"
-                        tabindex="2" class="startScreen_mobilelistitem_39">
+                    <!-- mobilelistitem_20 -->
+                    <li class="startScreen_mobilelistitem_20" data-icon="carat-r">
+                        <a id="startScreen_mobilelistitem_20" name="mobilelistitem_20" dsid="mobilelistitem_20"
+                        tabindex="1" class="startScreen_mobilelistitem_20">
                         <h3>Clear Map</h3>
                         </a>
                     </li>
