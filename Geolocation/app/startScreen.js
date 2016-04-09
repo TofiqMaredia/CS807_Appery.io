@@ -3,7 +3,7 @@
  */
 
 Apperyio.getProjectGUID = function() {
-    return '59cd47aa-6959-464f-8303-664abc0a47ee';
+    return 'cd03cc88-d7ac-490a-8adc-aea6c43dfe8e';
 };
 
 function navigateTo(outcome, useAjax) {
@@ -31,28 +31,28 @@ function startScreen_js() {
 
     /* Object & array with components "name-to-id" mapping */
     var n2id_buf = {
-        'button_back': 'startScreen_button_back',
+        'open_panel': 'startScreen_open_panel',
         'google_map': 'startScreen_google_map',
-        'marker_43': 'startScreen_marker_43',
-        'mobilelist_22': 'startScreen_mobilelist_22',
-        'mobilelistitem_23': 'startScreen_mobilelistitem_23',
-        'mobilelistitembutton_24': 'startScreen_mobilelistitembutton_24',
-        'mobilelistitem_25': 'startScreen_mobilelistitem_25',
-        'mobilelistitembutton_26': 'startScreen_mobilelistitembutton_26',
-        'mobilelistitem_27': 'startScreen_mobilelistitem_27',
-        'mobilelistitembutton_28': 'startScreen_mobilelistitembutton_28',
-        'mobilelistitem_29': 'startScreen_mobilelistitem_29',
-        'mobilelistitembutton_30': 'startScreen_mobilelistitembutton_30',
-        'mobilelistitem_31': 'startScreen_mobilelistitem_31',
-        'mobilelistitembutton_32': 'startScreen_mobilelistitembutton_32',
-        'mobilelistitem_33': 'startScreen_mobilelistitem_33',
-        'mobilelistitembutton_34': 'startScreen_mobilelistitembutton_34',
-        'mobilelistitem_35': 'startScreen_mobilelistitem_35',
-        'mobilelistitembutton_36': 'startScreen_mobilelistitembutton_36',
-        'mobilelistitem_37': 'startScreen_mobilelistitem_37',
-        'mobilelistitembutton_38': 'startScreen_mobilelistitembutton_38',
-        'mobilelistitem_39': 'startScreen_mobilelistitem_39',
-        'mobilelistitembutton_40': 'startScreen_mobilelistitembutton_40'
+        'marker_24': 'startScreen_marker_24',
+        'mobilelist_3': 'startScreen_mobilelist_3',
+        'mobilelistitem_4': 'startScreen_mobilelistitem_4',
+        'mobilelistitembutton_5': 'startScreen_mobilelistitembutton_5',
+        'mobilelistitem_6': 'startScreen_mobilelistitem_6',
+        'mobilelistitembutton_7': 'startScreen_mobilelistitembutton_7',
+        'mobilelistitem_8': 'startScreen_mobilelistitem_8',
+        'mobilelistitembutton_9': 'startScreen_mobilelistitembutton_9',
+        'mobilelistitem_10': 'startScreen_mobilelistitem_10',
+        'mobilelistitembutton_11': 'startScreen_mobilelistitembutton_11',
+        'mobilelistitem_12': 'startScreen_mobilelistitem_12',
+        'mobilelistitembutton_13': 'startScreen_mobilelistitembutton_13',
+        'mobilelistitem_14': 'startScreen_mobilelistitem_14',
+        'mobilelistitembutton_15': 'startScreen_mobilelistitembutton_15',
+        'mobilelistitem_16': 'startScreen_mobilelistitem_16',
+        'mobilelistitembutton_17': 'startScreen_mobilelistitembutton_17',
+        'mobilelistitem_18': 'startScreen_mobilelistitem_18',
+        'mobilelistitembutton_19': 'startScreen_mobilelistitembutton_19',
+        'mobilelistitem_20': 'startScreen_mobilelistitem_20',
+        'mobilelistitembutton_21': 'startScreen_mobilelistitembutton_21'
     };
 
     if ("n2id" in window && window.n2id !== undefined) {
@@ -67,12 +67,12 @@ function startScreen_js() {
 
     Apperyio.mappings = Apperyio.mappings || {};
 
-    Apperyio.mappings["startScreen_geolocation_onsuccess_mapping_0"] = {
+    Apperyio.mappings["startScreen_geolocation1_onsuccess_mapping_0"] = {
         "homeScreen": "startScreen",
         "directions": [
 
         {
-            "from_name": "geolocation",
+            "from_name": "geolocation1",
             "from_type": "SERVICE_RESPONSE",
 
             "to_name": "markerLat",
@@ -91,7 +91,7 @@ function startScreen_js() {
         },
 
         {
-            "from_name": "geolocation",
+            "from_name": "geolocation1",
             "from_type": "SERVICE_RESPONSE",
 
             "to_name": "markerLng",
@@ -112,13 +112,13 @@ function startScreen_js() {
         ]
     };
 
-    Apperyio.mappings["startScreen_geolocation_onbeforesend_mapping_0"] = {
+    Apperyio.mappings["startScreen_geolocation1_onbeforesend_mapping_0"] = {
         "homeScreen": "startScreen",
         "directions": [
 
         {
 
-            "to_name": "geolocation",
+            "to_name": "geolocation1",
             "to_type": "SERVICE_REQUEST",
 
             "to_default": {
@@ -140,28 +140,15 @@ function startScreen_js() {
 
     Apperyio.datasources = Apperyio.datasources || {};
 
-    window.geolocation = Apperyio.datasources.geolocation = new Apperyio.DataSource(GeolocationService, {
+    window.geolocation1 = Apperyio.datasources.geolocation1 = new Apperyio.DataSource(GeolocationService, {
         "onBeforeSend": function(jqXHR) {
-            Apperyio.processMappingAction(Apperyio.mappings["startScreen_geolocation_onbeforesend_mapping_0"]);
+            Apperyio.processMappingAction(Apperyio.mappings["startScreen_geolocation1_onbeforesend_mapping_0"]);
         },
         "onComplete": function(jqXHR, textStatus) {
 
         },
         "onSuccess": function(data) {
-            Apperyio.processMappingAction(Apperyio.mappings["startScreen_geolocation_onsuccess_mapping_0"]);
-            var markerLatLng = new google.maps.LatLng(localStorage.getItem('markerLat'), localStorage.getItem('markerLng'));
-
-            var marker = new google.maps.Marker({
-                position: markerLatLng,
-                map: map,
-                title: 'My position',
-                animation: google.maps.Animation.DROP
-            });
-
-            markers.push(marker);
-            bounds.extend(markerLatLng);
-            map.fitBounds(bounds);
-            map.setZoom(10);
+            Apperyio.processMappingAction(Apperyio.mappings["startScreen_geolocation1_onsuccess_mapping_0"]);
         },
         "onError": function(jqXHR, textStatus, errorThrown) {}
     });
@@ -178,8 +165,6 @@ function startScreen_js() {
     // On Load
     var startScreen_onLoad = function() {
             startScreen_elementsExtraJS();
-
-            initialize();
 
             startScreen_deviceEvents();
             startScreen_windowEvents();
@@ -238,35 +223,35 @@ function startScreen_js() {
             }
         });
 
-        /* mobilelist_22 */
+        /* mobilelist_3 */
 
-        listView = $("#startScreen_mobilelist_22");
+        listView = $("#startScreen_mobilelist_3");
         theme = listView.attr("data-theme");
         if (typeof theme !== 'undefined') {
             var themeClass = "ui-btn-up-" + theme;
-            listItem = $("#startScreen_mobilelist_22 .ui-li-static");
+            listItem = $("#startScreen_mobilelist_3 .ui-li-static");
             $.each(listItem, function(index, value) {
                 $(this).addClass(themeClass);
             });
         }
 
-        /* mobilelistitem_23 */
+        /* mobilelistitem_4 */
 
-        /* mobilelistitem_25 */
+        /* mobilelistitem_6 */
 
-        /* mobilelistitem_27 */
+        /* mobilelistitem_8 */
 
-        /* mobilelistitem_29 */
+        /* mobilelistitem_10 */
 
-        /* mobilelistitem_31 */
+        /* mobilelistitem_12 */
 
-        /* mobilelistitem_33 */
+        /* mobilelistitem_14 */
 
-        /* mobilelistitem_35 */
+        /* mobilelistitem_16 */
 
-        /* mobilelistitem_37 */
+        /* mobilelistitem_18 */
 
-        /* mobilelistitem_39 */
+        /* mobilelistitem_20 */
 
     };
 
@@ -278,56 +263,29 @@ function startScreen_js() {
             event.stopPropagation();
         });
 
-        $(document).off("click", '#startScreen_mobileheader [name="button_back"]').on({
+        $(document).off("click", '#startScreen_mobileheader [name="open_panel"]').on({
             click: function(event) {
                 if (!$(this).attr('disabled')) {
-                    $('[id="startScreen_Panel_navbar"]').panel("open");
+                    $('[id="startScreen_nav_menu"]').panel("open");
 
                 }
             },
-        }, '#startScreen_mobileheader [name="button_back"]');
+        }, '#startScreen_mobileheader [name="open_panel"]');
 
-        $(document).off("click", '#startScreen_Panel_navbar [name="mobilelistitem_25"]').on({
+        $(document).off("click", '#startScreen_nav_menu [name="mobilelistitem_6"]').on({
             click: function(event) {
                 if (!$(this).attr('disabled')) {
                     try {
-                        geolocation.execute({});
+                        geolocation1.execute({});
                     } catch (e) {
                         console.error(e);
                         hideSpinner();
                     };
-                    $('[id="startScreen_Panel_navbar"]').panel("close");
+                    $('[id="startScreen_nav_menu"]').panel("close");
 
                 }
             },
-        }, '#startScreen_Panel_navbar [name="mobilelistitem_25"]');
-
-        $(document).off("click", '#startScreen_Panel_navbar [name="mobilelistitem_29"]').on({
-            click: function(event) {
-                if (!$(this).attr('disabled')) {
-                    initialize();
-                    try {
-                        geolocation.execute({});
-                    } catch (e) {
-                        console.error(e);
-                        hideSpinner();
-                    };
-                    trafficLayer.setMap(map);
-                    Apperyio('Panel_navbar').panel('close');
-
-                }
-            },
-        }, '#startScreen_Panel_navbar [name="mobilelistitem_29"]');
-
-        $(document).off("click", '#startScreen_Panel_navbar [name="mobilelistitem_31"]').on({
-            click: function(event) {
-                if (!$(this).attr('disabled')) {
-                    trafficLayer.setMap(null);
-                    Apperyio('Panel_navbar').panel('close');
-
-                }
-            },
-        }, '#startScreen_Panel_navbar [name="mobilelistitem_31"]');
+        }, '#startScreen_nav_menu [name="mobilelistitem_6"]');
 
     };
 
