@@ -323,7 +323,7 @@ function __init_mapping() {
                     pathStatic = (nodeType === this.NODE_TYPES.INDEX || nodeType === this.NODE_TYPES.PROPERTY);
 
                 if (_.isArray(data) && objectLevel) throw new Error("Attempt to access Array by property name : " + pathHead);
-                if (_.isTrueObject(data) && arrayLevel) throw new Error("Attempt to access Object by index: " + pathHead);
+                if (_.isTrueObject(data) && arrayLevel) return this._get(pathArray, new Array(data));
 
                 if (pathDynamic) {
                     for (var j = 0; j < data.length; j++) {

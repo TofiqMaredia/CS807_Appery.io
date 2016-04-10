@@ -326,25 +326,33 @@
             },
 
             __fillRequestSettingsWithData : function(settings) {
-				function buildSettings(settingsInfo, requestInfo) {
-					if (requestInfo && settingsInfo) {
-						if ((requestInfo instanceof Array) && (settingsInfo instanceof Array)) {
-							return _.union(requestInfo,	settingsInfo);
-						} else {
-							return _.extend({}, requestInfo, settingsInfo);
-						}
-					} else {
-						return requestInfo || settingsInfo || {};
-					}
+				function buildSettings() {
+                    return _.reduce(arguments, function(total, settings) {
+                        if (settings) {
+                            if ((total instanceof Array) && (settings instanceof Array)) {
+                                return _.union(total, settings);
+                            } else {
+                                return _.extend({}, total, settings);
+                            }
+                        } else {
+                            return total || settings || {};
+                        }
+                    });
 				}
+
+                var serviceDefaults = settings.defaultRequest || {};
 				if (this.service instanceof Apperyio.RestService) {
-					settings.headers = _.extend({},	this.request.headers || {},	settings.headers || {});
-					settings.parameters = _.extend({},	this.request.parameters || {}, settings.parameters || {});
+					settings.headers = _.extend({}, serviceDefaults.headers || {},
+                                                    this.request.headers || {},
+                                                    settings.headers || {});
+					settings.parameters = _.extend({}, serviceDefaults.parameters || {},
+                                                   this.request.parameters || {},
+                                                   settings.parameters || {});
 					if (typeof FormData === "undefined"	|| !(settings.body instanceof FormData)) {
-						settings.body = buildSettings(settings.body, this.request.body);
+						settings.body = buildSettings(serviceDefaults.body, this.request.body, settings.body);
 					}
 				} else {
-					settings.data = buildSettings(settings.data, this.request.data);
+					settings.data = buildSettings(serviceDefaults.data, this.request.data, settings.data);
 				}
 			},
 
@@ -2160,6 +2168,7 @@
                 } catch (e) {
                     console.log("Refresh Exception: " + e.message);
                 }
+                comp.find("[type=radio],[type=checkbox]").filter(":not([data-changed])").checkboxradio();
             }
         );
         ctx.find("[dsid][data-changed]").removeAttr("data-changed");
