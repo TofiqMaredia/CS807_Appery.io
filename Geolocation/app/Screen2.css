@@ -1,0 +1,35 @@
+
+/* Define default spinner */
+.ui-icon-loading {
+	background: url("../libs/jquerymobile/1.4.5/images/ajax-loader.gif") repeat scroll 0 0 / 46px 46px transparent!important;
+}
+/* mobilecontainer */
+.ui-content.Screen2_mobilecontainer {
+	padding: 15px 15px 15px 15px;
+}
+/* address */
+.Screen2_address {
+	margin: 4px 0px 4px 0px;
+}
+/* mobilebutton_7 */
+#Screen2_mobilebutton_7 {
+
+}
+.ui-btn.Screen2_mobilebutton_7 {
+	margin: 4px 5px 4px 5px;
+}
+/* myMap */
+.Screen2_myMap {
+	width: 320px; height: 200px;
+	margin: 4px 0px 4px 0px;
+}
+/* marker_4 */
+.Screen2_marker_4 {
+	text-shadow:none;
+	color:black;
+	font-family:Arial;
+}
+/* mobilefooter */
+.Screen2_mobilefooter {
+	min-height:38px;
+}
